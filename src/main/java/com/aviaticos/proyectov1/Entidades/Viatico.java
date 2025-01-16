@@ -27,7 +27,7 @@ public class Viatico{
 
     //Identificación del cliente
     @Column(name="identificación_persona",nullable=false)
-    private String identificación;
+    private String identificacion;
 
     //Motivo del viaje del cliente
     @Column(name="motivo_viaje",nullable=false)
@@ -48,6 +48,10 @@ public class Viatico{
     //Correo de la persona que aprueba los viáticos
     @Column(name="correo_aprobador",nullable=false)
     private String correoAprobador;
+
+    //Numero de archivos encontrados en el zip
+    @Column(name="numero_archivos",nullable=false)
+    private int numeroArchivos;
 
 
 ////////////////////////////////////////////////////////////////
@@ -73,8 +77,8 @@ public class Viatico{
 
 
     //Getter y setter del tipo de identificación del cliente
-    public void setIdentificación(String identificación) {this.identificación = identificación;}
-    public String getIdentificación() {return identificación;}
+    public void setIdentificacion(String identificacion) {this.identificacion = identificacion;}
+    public String getIdentificacion() {return identificacion;}
 
 
     //Getter y setter del motivo del viaje
@@ -100,5 +104,10 @@ public class Viatico{
     //Getter y setter del correo del agente que aprueba la liquidación del viatico
     public void setCorreoAprobador(String correoAprobador) {this.correoAprobador = correoAprobador;}
     public String getCorreoAprobador() {return correoAprobador;}
+
+
+    //Getter y setter del numero de archivos encontrados en el zip
+    public void setNumeroArchivos(int numeroArchivos) { this.numeroArchivos = numeroArchivos;}
+    public int getNumeroArchivos() {return numeroArchivos;}
 
 }

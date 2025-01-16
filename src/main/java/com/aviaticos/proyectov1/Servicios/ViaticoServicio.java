@@ -2,10 +2,8 @@ package com.aviaticos.proyectov1.Servicios;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.aviaticos.proyectov1.Entidades.Viatico;
 import com.aviaticos.proyectov1.Repositorios.ViaticoRepository;
 
@@ -42,9 +40,9 @@ public class ViaticoServicio {
         return viaticoRepo.findAll();
     }
 
-    //Obtención de un viatico por su ID
-    public Optional<Viatico> getViaticosByID(Long ID){
-        return viaticoRepo.findById(ID);
+    //Busqueda de viaticos por medio de la identificación del agente que las registro
+    public List<Viatico> getIdentificacion(String identificacion){
+        return viaticoRepo.findByIdentificacion(identificacion);
     }
   
 }

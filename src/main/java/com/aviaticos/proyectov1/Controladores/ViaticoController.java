@@ -27,4 +27,16 @@ public class ViaticoController {
         List<Viatico> viaticos = viaticoServ.getViaticos();
     return new ResponseEntity<>(viaticos,HttpStatus.OK);
     }
+
+
+    @GetMapping("/busqueda/{identificacion}")
+    public ResponseEntity<List<Viatico>>viaticoPorID(@PathVariable String identificacion){
+        List<Viatico> viaticos = viaticoServ.getIdentificacion(identificacion);
+
+        if(viaticos.isEmpty()){
+             return ResponseEntity.noContent().build();
+        }
+    return new ResponseEntity<>(viaticos,HttpStatus.OK);
+    }
+
 }
