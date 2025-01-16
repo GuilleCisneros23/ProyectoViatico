@@ -1,11 +1,12 @@
 package com.aviaticos.proyectov1.Entidades;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Date;
 
 @Entity
 @Table(name = "viaticos")
@@ -48,9 +49,6 @@ public class Viatico{
     @Column(name="correo_aprobador",nullable=false)
     private String correoAprobador;
 
-    //Numero de archivos
-    @Column(name="numero_archivos",nullable=false)
-    private int numeroArchivos;
 
 ////////////////////////////////////////////////////////////////
 
@@ -102,16 +100,5 @@ public class Viatico{
     //Getter y setter del correo del agente que aprueba la liquidación del viatico
     public void setCorreoAprobador(String correoAprobador) {this.correoAprobador = correoAprobador;}
     public String getCorreoAprobador() {return correoAprobador;}
-
-    
-    //Getter y setter del número de archivos subidos en ese registro
-    public void setNumeroArchivos(int numeroArchivos) {this.numeroArchivos = numeroArchivos;}
-    public int getNumeroArchivos() {return numeroArchivos;}
-
-    
-
-
-    
-
 
 }
