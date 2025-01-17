@@ -1,45 +1,13 @@
-<div class="container">
-  <h1>Valhalla Enterprises</h1>
-  
-  <button (click)="showForm = true">Formulario</button>
-  <button (click)="showForm = false">Buscar</button>
+<div>
+    <h1>{{title}}</h1>
+    <button (click)="toggleSection()">Tabla</button>
+    <button (click)="toggleBusqueda()">Busqueda</button>
+</div>
 
-  <div *ngIf="showForm">
-      <h2>Registro de aviaticos</h2>
-      <form>
-          <label for="fechaRegistro">Fecha de Registro:</label>
-          <input type ="date" id="fechaRegistro" name="fechaRegistro">
+<div *ngIf="showForm">
+    <app-registro></app-registro>
+</div>
 
-          <label for="agente">Agente:</label>
-          <input type ="text" id="agente" name="agente">
-
-          <label for="identificacion">Identificación:</label>
-          <input type ="text" id="identificacion" name="identificacion">
-
-          <label for="motivo">Motivo del viaje::</label>
-          <input type ="text" id="motivo" name="motivo">
-
-          <label for="cliente">Cliente/Proyecto:</label>
-          <input type ="text" id="cliente" name="cliente">
-
-          <label for="fechaInit">Fecha de inicio del viaje:</label>
-          <input type ="date" id="fechaInit" name="fechaInit">
-
-          <label for="fechaFin">Fecha de finalización del viaje:</label>
-          <input type ="date" id="fechaFin" name="fechaFin">
-
-          <label for="correoAprobador">Correo del aprobante:</label>
-          <input type ="text" id="correoAprobador" name="correoAprobador">
-
-          <button type="submit">Enviar</button>
-      </form>
-  </div>
-
-
-  <div *ngIf="!showForm">
-      <h2>Buscar</h2>
-      <input type="text"placeholder="Busqueda por identificación del agente...">
-      <button type="submit">Buscar</button>
-
-  </div>
+<div *ngIf="showBusqueda">
+    <app-busqueda></app-busqueda>
 </div>

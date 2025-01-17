@@ -1,15 +1,29 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RegistroComponent } from './registro/registro.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  imports: [CommonModule],
+  imports: [CommonModule,RegistroComponent,BusquedaComponent],
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title = 'Valhalla Airways';
+  showForm = true;
+  showBusqueda = false;
 
-  showForm: boolean = true;
+  toggleSection() {
+    this.showForm = true;
+    this.showBusqueda = false;
+  }
+
+  toggleBusqueda(){
+    this.showForm = false;
+    this.showBusqueda = true;
+  }
 
 }
