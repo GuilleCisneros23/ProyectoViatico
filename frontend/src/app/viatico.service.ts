@@ -13,7 +13,6 @@ export class ViaticoService {
 
   crearViatico(viatico: any): Observable<any> {
     console.log("JSON enviado desde Angular: ", viatico);
-    
     return this.http.post(`${this.apiUrl}/crear`, viatico);
   }
 

@@ -1,13 +1,15 @@
 <div>
-    <h1>{{title}}</h1>
-    <button (click)="toggleSection()">Tabla</button>
-    <button (click)="toggleBusqueda()">Busqueda</button>
-</div>
-
-<div *ngIf="showForm">
-    <app-registro></app-registro>
-</div>
-
-<div *ngIf="showBusqueda">
-    <app-busqueda></app-busqueda>
+    <div class="botones">
+        <h1>{{title}}</h1>
+        <button (click)="toggleSection()">Registro de viáticos</button>
+        <button (click)="toggleBusqueda()">Busqueda de viáticos</button>
+    </div>
+    
+    <div *ngIf="showForm">
+        <app-registro></app-registro>
+    </div>
+    
+    <div *ngIf="showBusqueda">
+        <app-busqueda></app-busqueda>
+    </div>
 </div>

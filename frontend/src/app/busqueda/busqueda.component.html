@@ -1,5 +1,38 @@
 <div>
-    <h2>Buscar</h2>
-    <input type="text"placeholder="Busqueda por identificación del agente...">
-    <button type="submit">Buscar</button>
-</div>
+    <div class="form-group">
+      <h2>Busqueda de Viáticos</h2>
+      <input type="text" [(ngModel)]="identificacion" placeholder="Ingresa la identificación del agente...">
+    </div>
+    <button type="submit" (click)="search()">Buscar</button>
+  
+    <!-- Tabla para mostrar los viáticos -->
+    <table *ngIf="viaticos.length > 0" class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Agente</th>
+          <th>Cliente</th>
+          <th>Correo Aprobador</th>
+          <th>Motivo</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Fecha Registro</th>
+          <th>Número de Archivos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viatico of viaticos">
+          <td>{{ viatico.agente }}</td>
+          <td>{{ viatico.cliente }}</td>
+          <td>{{ viatico.correoAprobador }}</td>
+          <td>{{ viatico.motivo }}</td>
+          <td>{{ viatico.fechaInicio | date:'shortDate' }}</td>
+          <td>{{ viatico.fechaFin | date:'shortDate' }}</td>
+          <td>{{ viatico.fecha_registro | date:'shortDate' }}</td>
+          <td>{{ viatico.numeroArchivos }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="viaticos.length === 0">No se encontraron viáticos para la identificación proporcionada.</p>
+  </div>
+  

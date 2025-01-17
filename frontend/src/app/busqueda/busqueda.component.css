@@ -3,44 +3,49 @@ div {
     border-radius: 15px;
     padding: 10px;
     display: flex;
+    align-items: center;
     flex-direction: column;
     background-color: rgb(28, 0, 56);
 }
 
+
 h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: start;
-    size: 70px;
+    size: 80px;
     padding: 10px;
     color: blueviolet;
-    margin-top: 10px;
-    margin-bottom: 50px; 
+    margin-bottom: 10px; 
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 10px;
 }
 
 
 input[type="text"], input[type="date"] { 
+    width: 80%; 
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: azure;
+    color: rgb(0, 0, 0);
     border: 1px solid #bdbdbd;
     box-sizing: border-box; 
 }
 
 button {
     padding: 10px;
-    margin: 60px auto;
+    margin-bottom: 50px;
     margin-top: 50px;
     background-color: blueviolet;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 50%;
+    width: 25%;
 }
 
 button:hover {
