@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ViaticoService } from '../viatico.service';
 import JSZip from 'jszip';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registro',
@@ -11,55 +13,89 @@ import JSZip from 'jszip';
   standalone: true
 })
 export class RegistroComponent {
-
-  fileInfo: { fileCount: number } | null = null;
+  
+  fileInfo: { numeroArchivos: number } | null = null;
 
   formData: {
-    fechaRegistro: string;
+    fecha_registro: string;
     agente: string;
     identificacion: string;
     motivo: string;
     cliente: string;
-    fechaInit: string;
+    fechaInicio: string;
     fechaFin: string;
     correoAprobador: string;
-    fileCount: number | null;
+    numeroArchivos: number | null;
   } = {
-    fechaRegistro: '',
+    fecha_registro: '',
     agente: '',
     identificacion: '',
     motivo: '',
     cliente: '',
-    fechaInit: '',
+    fechaInicio: '',
     fechaFin: '',
     correoAprobador: '',
-    fileCount: null
+    numeroArchivos: null
   };
+
+  constructor(
+    private viaticoService: ViaticoService, 
+    private http: HttpClient
+  ) {}
 
   onSubmit(): void {
     const form: HTMLFormElement = document.querySelector('form')!;
     const formData = new FormData(form);
+    const formatDate = (date: string): string => {return date;};
+    const fecha_registro = formatDate(formData.get('fecha_registro') as string);
+    const fechaInicio = formatDate(formData.get('fechaInicio') as string);
+    const fechaFin = formatDate(formData.get('fechaFin') as string);
 
+
+    // Estructurar los datos a enviar
     this.formData = {
-      fechaRegistro: formData.get('fechaRegistro') as string,
+      fecha_registro: fecha_registro,
       agente: formData.get('agente') as string,
       identificacion: formData.get('identificacion') as string,
       motivo: formData.get('motivo') as string,
       cliente: formData.get('cliente') as string,
-      fechaInit: formData.get('fechaInit') as string,
-      fechaFin: formData.get('fechaFin') as string,
+      fechaInicio: fechaInicio,
+      fechaFin: fechaFin,
       correoAprobador: formData.get('correoAprobador') as string,
-      fileCount: this.fileInfo?.fileCount ?? 0
+      numeroArchivos: this.fileInfo?.numeroArchivos ?? 0
     };
 
-    console.log('Datos del formulario guardados...', this.formData);
+    // Enviar los datos al backend
+    this.http.post('http://localhost:8080/api/viaticos/crear', this.formData)
+      .subscribe(
+        (response) => {
+          console.log('Viático creado con éxito', response);
+        },
+        (error) => {
+          console.error('Error al crear el viático', error);
+        }
+      );
+
+      this.formData = {
+        fecha_registro: '',
+        agente: '',
+        identificacion: '',
+        motivo: '',
+        cliente: '',
+        fechaInicio: '',
+        fechaFin: '',
+        correoAprobador: '',
+        numeroArchivos: null
+      };
+
+      this.fileInfo = null;
   }
 
   async onFileSelected(event: Event): Promise<void> {
     this.fileInfo = await this.processFile(event);
   }
 
-  private async processFile(event: Event): Promise<{ fileCount: number } | null> {
+  private async processFile(event: Event): Promise<{ numeroArchivos: number } | null> {
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files.length > 0) {
@@ -70,8 +106,8 @@ export class RegistroComponent {
 
         try {
           const zipContent = await zip.loadAsync(file);
-          const fileCount = Object.keys(zipContent.files).length;
-          return { fileCount };
+          const numeroArchivos= Object.keys(zipContent.files).length;
+          return { numeroArchivos };
         } catch (error) {
           console.error('Error al procesar el archivo ZIP...', error);
           return null;

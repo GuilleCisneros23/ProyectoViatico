@@ -1,6 +1,8 @@
 package com.aviaticos.proyectov1.Entidades;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,7 @@ public class Viatico{
     private Long ID;
 
     //Fecha del registro 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="fecha_registro",nullable=false)
     private Date fecha_registro;
 
@@ -38,10 +41,12 @@ public class Viatico{
     private String cliente;
 
     //Inicio del viaje
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="fecha_inicio",nullable=false)
     private Date fechaInicio;
 
     //Fin del viaje
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="fecha_fin",nullable=false)
     private Date fechaFin;
 
@@ -109,5 +114,23 @@ public class Viatico{
     //Getter y setter del numero de archivos encontrados en el zip
     public void setNumeroArchivos(int numeroArchivos) { this.numeroArchivos = numeroArchivos;}
     public int getNumeroArchivos() {return numeroArchivos;}
+
+
+    //toString para verificar la llegada del viatico y su contenido
+    @Override
+    public String toString() {
+        return "Viatico{" +
+                "ID=" + ID +
+                ", fecha_registro=" + fecha_registro +
+                ", agente='" + agente + '\'' +
+                ", identificacion='" + identificacion + '\'' +
+                ", motivo='" + motivo + '\'' +
+                ", cliente='" + cliente + '\'' +
+                ", fechaInicio=" + fechaInicio +
+                ", fechaFin=" + fechaFin +
+                ", correoAprobador='" + correoAprobador + '\'' +
+                ", numeroArchivos=" + numeroArchivos +
+                '}';
+    }
 
 }

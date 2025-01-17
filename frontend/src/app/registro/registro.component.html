@@ -1,8 +1,8 @@
 <div>
     <h2>Registro de aviaticos</h2>
     <form (ngSubmit)="onSubmit()">
-      <label for="fechaRegistro">Fecha de Registro:</label>
-      <input type="date" id="fechaRegistro" name="fechaRegistro" [(ngModel)]="formData.fechaRegistro" required>
+      <label for="fecha_registro">Fecha de Registro:</label>
+      <input type="date" id="fecha_registro" name="fecha_registro" [(ngModel)]="formData.fecha_registro" required>
   
       <label for="agente">Agente:</label>
       <input type="text" id="agente" name="agente" [(ngModel)]="formData.agente" required>
@@ -16,8 +16,8 @@
       <label for="cliente">Cliente/Proyecto:</label>
       <input type="text" id="cliente" name="cliente" [(ngModel)]="formData.cliente" required>
   
-      <label for="fechaInit">Fecha de inicio del viaje:</label>
-      <input type="date" id="fechaInit" name="fechaInit" [(ngModel)]="formData.fechaInit" required>
+      <label for="fechaInicio">Fecha de inicio del viaje:</label>
+      <input type="date" id="fechaInicio" name="fechaInicio" [(ngModel)]="formData.fechaInicio" required>
   
       <label for="fechaFin">Fecha de finalización del viaje:</label>
       <input type="date" id="fechaFin" name="fechaFin" [(ngModel)]="formData.fechaFin" required>
@@ -27,7 +27,7 @@
   
       <label for="file">Facturas:</label>
       <input type="file" id="file" accept=".zip" (change)="onFileSelected($event)" required />
-      <p *ngIf="fileInfo">El zip contiene: <strong>{{ fileInfo.fileCount }}</strong> factura(s)</p>
+      <p *ngIf="fileInfo">El zip contiene: <strong>{{ fileInfo.numeroArchivos }}</strong> factura(s)</p>
   
       <button type="submit">Enviar</button>
     </form>
