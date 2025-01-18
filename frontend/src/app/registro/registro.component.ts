@@ -46,56 +46,86 @@ export class RegistroComponent {
   onSubmit(): void {
     const form: HTMLFormElement = document.querySelector('form')!;
     const formData = new FormData(form);
-    const formatDate = (date: string): string => {return date;};
+    const formatDate = (date: string): string => { return date; };
+    const hoy = new Date();
+    const fecha90Dias = new Date();
+
+    // Obtención de los datos del formulario
     const fecha_registro = formatDate(formData.get('fecha_registro') as string);
     const fechaInicio = formatDate(formData.get('fechaInicio') as string);
     const fechaFin = formatDate(formData.get('fechaFin') as string);
+    const agente = formData.get('agente') as string;
+    const identificacion = formData.get('identificacion') as string;
+    const motivo = formData.get('motivo') as string;
+    const cliente = formData.get('cliente') as string;
+    const correoAprobador = formData.get('correoAprobador') as string;
+    const numeroArchivos = this.fileInfo?.numeroArchivos ?? 0;
 
+    // Validación de la fecha
+    const hoyString = hoy.toISOString().split('T')[0];
 
-    // Estructurar los datos a enviar
-    this.formData = {
-      fecha_registro: fecha_registro,
-      agente: formData.get('agente') as string,
-      identificacion: formData.get('identificacion') as string,
-      motivo: formData.get('motivo') as string,
-      cliente: formData.get('cliente') as string,
-      fechaInicio: fechaInicio,
-      fechaFin: fechaFin,
-      correoAprobador: formData.get('correoAprobador') as string,
-      numeroArchivos: this.fileInfo?.numeroArchivos ?? 0
-    };
+    if (fecha_registro > hoyString) {
+      alert("La fecha de registro no puede ser mayor a la fecha actual...");
+      return;
+    } else {
+      fecha90Dias.setDate(hoy.getDate() - 90);
+      const fecha90DiasString = fecha90Dias.toISOString().split('T')[0];
+      if (fecha_registro < fecha90DiasString) {
+        alert("La fecha de registro debe estar dentro de un rango de 90 días atrás...");
+        return;
+      }
+    }
 
-    // Enviar los datos al backend
-    this.http.post('http://localhost:8080/api/viaticos/crear', this.formData)
-      .subscribe(
-        (response) => {
-          console.log('Viático creado con éxito', response);
-        },
-        (error) => {
-          console.error('Error al crear el viático', error);
-        }
-      );
-
+    // Verificación de que todos los campos estén completos
+    if (!identificacion || !agente || !motivo || !cliente || !fecha_registro 
+        || !fechaInicio || !fechaInicio || !correoAprobador || !numeroArchivos) {
+      alert("Todos los campos del formulario deben estar completos, por favor intentalo de nuevo...");
+      return;
+    } else {
+      // Estructuración de los datos para su envío al backend
       this.formData = {
-        fecha_registro: '',
-        agente: '',
-        identificacion: '',
-        motivo: '',
-        cliente: '',
-        fechaInicio: '',
-        fechaFin: '',
-        correoAprobador: '',
-        numeroArchivos: null
+        fecha_registro: fecha_registro,
+        agente: agente,
+        identificacion: identificacion,
+        motivo: motivo,
+        cliente: cliente,
+        fechaInicio: fechaInicio,
+        fechaFin: fechaFin,
+        correoAprobador: correoAprobador,
+        numeroArchivos: numeroArchivos
       };
 
-      this.fileInfo = null;
+      // Envío de los datos al backend
+      this.http.post('http://localhost:8080/api/viaticos/crear', this.formData)
+        .subscribe(
+          (response) => {
+            console.log('Viático creado con éxito', response);
+          },
+          (error) => {
+            console.error('Error al crear el viático', error);
+          }
+        );
+      
+      alert("Viático registrado con exito!");
+    }
+
+    // Limpieza de los datos dentro del formulario
+    this.formData = {
+      fecha_registro: '',
+      agente: '',
+      identificacion: '',
+      motivo: '',
+      cliente: '',
+      fechaInicio: '',
+      fechaFin: '',
+      correoAprobador: '',
+      numeroArchivos: null
+    };
+    this.fileInfo = null;
   }
 
+  // Proceso asincrónico para cargar el archivo ZIP
   async onFileSelected(event: Event): Promise<void> {
-    this.fileInfo = await this.processFile(event);
-  }
-
-  private async processFile(event: Event): Promise<{ numeroArchivos: number } | null> {
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files.length > 0) {
@@ -106,18 +136,21 @@ export class RegistroComponent {
 
         try {
           const zipContent = await zip.loadAsync(file);
-          const numeroArchivos= Object.keys(zipContent.files).length;
-          return { numeroArchivos };
+          this.fileInfo = { numeroArchivos: Object.keys(zipContent.files).length };
         } catch (error) {
           console.error('Error al procesar el archivo ZIP...', error);
-          return null;
+          this.fileInfo = null;
         }
       } else {
         console.error('El archivo no sigue el formato zip...');
-        return null;
+        this.fileInfo = null;
       }
+    } else {
+      this.fileInfo = null;
     }
 
-    return null;
   }
+
+
+
 }
