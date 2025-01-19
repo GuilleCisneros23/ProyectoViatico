@@ -1,5 +1,6 @@
 ##Proyecto Viático##
 
+En Github se encuentran todas las versione subidas del proyecto, la versión final se encuentra en la rama Main.
 
 ##Requisitos##
 
