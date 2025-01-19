@@ -1,8 +1,9 @@
-<div>
+<div class="contenedor">
+    <h1>{{title}}</h1>
+    
     <div class="botones">
-        <h1>{{title}}</h1>
-        <button (click)="toggleSection()">Registro de viáticos</button>
-        <button (click)="toggleBusqueda()">Busqueda de viáticos</button>
+        <button (click)="toggleSection()">Registro de viaticos</button>
+        <button (click)="toggleBusqueda()">Busqueda de viaticos</button>
     </div>
     
     <div *ngIf="showForm">

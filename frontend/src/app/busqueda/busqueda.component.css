@@ -1,31 +1,38 @@
+/* Sección principal del componente*/
 div {
-    margin-top: 5px;
-    border-radius: 15px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #070607;
+  background-color: #070607;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  border-radius: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Títulos */
 h2 {
     font-family: 'New Day';
-    text-align: start;
-    font-size: 40px;
+    text-align: center;
+    font-size: 36px; 
     padding: 10px;
     color: blueviolet;
-    margin-bottom: 10px; 
+    margin-bottom: 20px;
 }
 
+/* sección de busqueda de viáticos*/
 .form-group {
-    display: flex;
     align-items: center;
-    width: 50%;
-    gap: 10px;
+    width: 80%;
+    margin-bottom: 20px; 
+    gap: 8px;  
 }
 
+/* Input de busqueda */
 input[type="text"], input[type="date"] { 
-    width: 80%; 
+    width: 100%;
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
@@ -34,44 +41,74 @@ input[type="text"], input[type="date"] {
     box-sizing: border-box; 
 }
 
+/* Agrupación de botones Buscar y Reiniciar Busqueda */
+.botones {
+    font-family: 'New Day';
+    font-size: 28px;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin-top: 10px;
+}
+
+/* Estructura del botón */
 button {
+    font-family: 'New Day';
     padding: 10px;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
     background-color: rgb(68, 0, 131);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     width: 25%;
 }
 
+/* Hover del botón */
 button:hover {
     background-color: rgb(174, 0, 255);
     color: aqua;
 }
 
+/*Celda del nombre de la columna*/
 th.mat-header-cell {
     font-family: 'New Day';
     text-align: center;
     align-items: center;
     font-weight: bold;
     color: blueviolet;
-    padding: 15px;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-right: 1px solid #ccc;
 }
 
+/*Celda de la columan*/
 td.mat-cell {
     text-align: center;
-    padding: 8px;
+    padding: 6px;
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
 
+
+/*Tabla de datos*/
 table {
     width: 100%;
     align-items: center;
     border-collapse: collapse;
     margin-top: 20px;
     margin-bottom: 20px;
+    color: white;
     background-color: rgb(8, 0, 15);
+    border: 2px solid #ddd;
 }
 
 .mat-elevation-z8 {
@@ -84,6 +121,10 @@ table {
     border-bottom: 1px solid #ddd;
 }
 
-p{
+/*Texto del status de la consulta*/
+p {
+    font-family: "New Day";
     color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

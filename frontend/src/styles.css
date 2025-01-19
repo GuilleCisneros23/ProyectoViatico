@@ -1,9 +1,12 @@
 html, body { 
-  height: 100%; 
+  height: 100%;
+  width: 80%; 
+  background-color: rgb(29, 0, 56)
 }
 
 body { 
   margin: 0; 
+  width: 80%; 
   font-family: Roboto, "Helvetica Neue", sans-serif, "New Day"; 
 }
 
