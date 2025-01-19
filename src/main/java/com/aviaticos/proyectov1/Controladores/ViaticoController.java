@@ -27,7 +27,6 @@ public class ViaticoController {
 
     @PostMapping("/crear")
     public ResponseEntity<Viatico>crearViatico(@RequestBody Viatico viatico){
-        System.out.println("JSON recibido en el controlador: " + viatico.toString());
         Viatico newViatico = viaticoServ.nuevoViatico(viatico);
     return new ResponseEntity<>(newViatico,HttpStatus.CREATED);
     }

@@ -1,35 +1,56 @@
 <div>
-    <h2>Registro de viáticos</h2>
-    <form (ngSubmit)="onSubmit()">
+  <h2>Registro de viaticos</h2>
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="seccion">
       <label for="fecha_registro">Fecha de Registro:</label>
-      <input type="date" id="fecha_registro" name="fecha_registro" [(ngModel)]="formData.fecha_registro" required>
-  
+      <input type="date" id="fecha_registro" name="fecha_registro" placeholder= "Ingresa la fecha de registro del viatico" [(ngModel)]="formData.fecha_registro" required>
+    </div>
+
+    <div class="seccion">
       <label for="agente">Agente:</label>
-      <input type="text" id="agente" name="agente" [(ngModel)]="formData.agente" required>
-  
+      <input type="text" id="agente" name="agente" placeholder="Nombre del agente" [(ngModel)]="formData.agente" required>
+    </div>
+
+    <div class="seccion">
       <label for="identificacion">Identificación:</label>
-      <input type="text" id="identificacion" name="identificacion" [(ngModel)]="formData.identificacion" required>
-  
+      <input type="text" id="identificacion" name="identificacion" placeholder="Ingresa la identificación del agente" [(ngModel)]="formData.identificacion" required>
+    </div>
+
+    <div class="seccion">
       <label for="motivo">Motivo del viaje:</label>
-      <input type="text" id="motivo" name="motivo" [(ngModel)]="formData.motivo" required>
-  
+      <input type="text" id="motivo" name="motivo" placeholder="Ingresa el motivo del viaje" [(ngModel)]="formData.motivo" required>
+    </div>
+
+    <div class="seccion">
       <label for="cliente">Cliente/Proyecto:</label>
-      <input type="text" id="cliente" name="cliente" [(ngModel)]="formData.cliente" required>
-  
+      <input type="text" id="cliente" name="cliente" placeholder="Ingresa el nombre del cliente o del proyecto" [(ngModel)]="formData.cliente" required>
+    </div>
+
+    <div class="seccion">
       <label for="fechaInicio">Fecha de inicio del viaje:</label>
-      <input type="date" id="fechaInicio" name="fechaInicio" [(ngModel)]="formData.fechaInicio" required>
-  
+      <input type="date" id="fechaInicio" name="fechaInicio" placeholder="Ingresa la fecha del inicio del viaje" [(ngModel)]="formData.fechaInicio" required>
+    </div>
+
+    <div class="seccion">
       <label for="fechaFin">Fecha de finalización del viaje:</label>
-      <input type="date" id="fechaFin" name="fechaFin" [(ngModel)]="formData.fechaFin" required>
-  
+      <input type="date" id="fechaFin" name="fechaFin" placeholder="Ingresa la fecha de finalizacion del viaje" [(ngModel)]="formData.fechaFin" required>
+    </div>
+
+    <div class="seccion">
       <label for="correoAprobador">Correo del aprobante:</label>
-      <input type="text" id="correoAprobador" name="correoAprobador" [(ngModel)]="formData.correoAprobador" required>
-  
-      <label for="file">Facturas:</label>
+      <input type="text" id="correoAprobador" name="correoAprobador" placeholder="Ingresa el correo del aprobante de los viaticos" [(ngModel)]="formData.correoAprobador" required>
+    </div>
+
+
+    <div class="seccion-factura">
+      <label for="file" class="custom-file-label">Facturas (ZIP):</label>
       <input type="file" id="file" accept=".zip" (change)="onFileSelected($event)" required />
-      <p *ngIf="fileInfo">El zip contiene: <strong>{{ fileInfo.numeroArchivos }}</strong> factura(s)</p>
-  
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-  
+    </div>
+    
+    <p *ngIf="fileInfo">El zip contiene: <strong>{{ fileInfo.numeroArchivos }}</strong> factura(s)</p>
+
+    <button type="submit">Enviar</button>
+    
+  </form>
+</div>

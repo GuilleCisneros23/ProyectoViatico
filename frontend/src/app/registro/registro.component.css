@@ -1,56 +1,45 @@
-
 div {
-    margin-top: 5px;
-    border-radius: 15px;
-    padding: 10px;
     background-color: #070607;
 }
 
 h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: start;
+    font-family: 'New Day';
+    text-align: center;
     font-size: 40px;
     padding: 10px;
     color: blueviolet;
-    margin-bottom: 10px; 
+    margin-top: 30px;
+    margin-bottom: 80px; 
 }
 
-form {
-    padding: 10px;
+.seccion {
     display: flex;
-    flex-direction: column;
-    text-align: start;
-    gap: 20px; 
+    flex-direction: row;
+    align-items: start;
+    margin-bottom: 50px;
 }
 
-.form-group {
+
+form{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px; 
+    margin-left: 5%;
+    margin-right: -20px;
+    padding-right: 8%;
 }
 
 label {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: start;
-    font-size: 20px;
-    margin-top: 50px;
+    font-family: 'New Day';
     color: blueviolet;
-    width: 50%; 
+    font-size: 20px;
+    width: 100%;
+    margin-right: 100px;
+    padding: 10px;
 }
 
-input[type="text"], input[type="date"] {
-    width: 50%; 
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 5px;
-    color: rgb(0, 0, 0);
-    border: 1px solid #bdbdbd;
-    box-sizing: border-box; 
-}
 
 button {
+    font-family: 'New Day';
     padding: 10px;
     margin: 60px auto;
     margin-top: 50px;
@@ -67,8 +56,42 @@ button:hover {
     color: aqua;
 }
 
-p{
+p {
     color: azure;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    size: 15px;
+    font-family: 'New Day';
+    size: 20px;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="text"], input[type="date"]{
+    width: 150%; 
+    padding: 20px;
+    margin-left: -100px;
+    font-size: 16px;  
+    height: 40px;  
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    box-sizing: border-box;
+}
+
+.custom-file-label {
+    display: inline-block;
+    background-color: rgb(68, 0, 131);
+    color: white;
+    padding: 20px 1px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.custom-file-label:hover {
+    background-color: rgb(174, 0, 255);
+    color: aqua;
+}
+
+

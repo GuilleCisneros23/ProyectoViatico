@@ -9,7 +9,7 @@ div {
 }
 
 h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'New Day';
     text-align: start;
     font-size: 40px;
     padding: 10px;
@@ -52,6 +52,7 @@ button:hover {
 }
 
 th.mat-header-cell {
+    font-family: 'New Day';
     text-align: center;
     align-items: center;
     font-weight: bold;
@@ -71,12 +72,12 @@ table {
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: rgb(8, 0, 15);
-    border-radius: 15px;
 }
 
 .mat-elevation-z8 {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     align-items: center;
+    border-radius: 15px;
 }
 
 .mat-header-row, .mat-row {

@@ -12,7 +12,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Valhalla Airways';
+  title = 'Valhalla  Enterprises';
   showForm = true;
   showBusqueda = false;
 
