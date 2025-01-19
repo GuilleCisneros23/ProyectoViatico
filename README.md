@@ -33,6 +33,11 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes pro
 Con las anteriores herramientas, ya se puede seguir para hacer correr el proyecto de viáticos.
 
 
+Edit 1: Se contemplo integrar Docker para el manejo de mariaDB pero tuvo que descartarse esa idea ya que no se pudo crear un 
+contenedor adecuado que realizara el proceso de la creación de la base de datos. Por eso se tuvo que recurrir a la creación manual de
+la base por parte de los usuarios y la configuración de la contraseña root dentro del archivo "application.properties"
+
+
 ##Instrucciones##
 
 
